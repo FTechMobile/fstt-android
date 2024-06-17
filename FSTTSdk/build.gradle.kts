@@ -30,6 +30,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 apply(from = "$rootDir/stt-gradle-maven.gradle")
