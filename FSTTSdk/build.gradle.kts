@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.serialization)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kapt)
-    id("maven-publish")
 }
 
 android {
@@ -33,16 +32,7 @@ android {
     }
 }
 
-configure<PublishingExtension> {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "com.github.ftechmobile"
-            artifactId = "fstt-android"
-            version = "1.0.4"
-            afterEvaluate { from(components["release"]) }
-        }
-    }
-}
+apply(from = "$rootDir/stt-gradle-maven.gradle")
 
 dependencies {
 
