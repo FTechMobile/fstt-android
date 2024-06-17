@@ -4,11 +4,11 @@ plugins {
     alias(libs.plugins.serialization)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kapt)
-    `maven-publish`
+    id("maven-publish")
 }
 
 group = "com.github.ftechmobile"
-version = "1.0.0"
+version = "1.0.1"
 
 android {
     namespace = "ai.ftech.fsttsdk"
@@ -64,13 +64,15 @@ dependencies {
     implementation(libs.lifecycle.runtime.compose)
 }
 
-configure<PublishingExtension> {
+publishing {
     publications {
-        register<MavenPublication>("release") {
-            groupId = "com.github.ftechmobile"
-            artifactId = "fstt"
-            version = "1.0.0"
-            afterEvaluate { from(components["release"]) }
+        afterEvaluate {
+            register<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.ftechmobile"
+                artifactId = "fstt"
+                version = "1.0.1"
+            }
         }
     }
 }
