@@ -37,8 +37,8 @@ configure<PublishingExtension> {
     publications {
         register<MavenPublication>("release") {
             groupId = "com.github.ftechmobile"
-            artifactId = "fstt"
-            version = "1.0.3"
+            artifactId = "fstt-android"
+            version = "1.0.4"
             afterEvaluate { from(components["release"]) }
         }
     }
