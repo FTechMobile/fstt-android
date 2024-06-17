@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.github.ftechmobile"
-version = "1.0.1"
+version = "1.0.2"
 
 android {
     namespace = "ai.ftech.fsttsdk"
@@ -71,7 +71,7 @@ publishing {
                 from(components["release"])
                 groupId = "com.github.ftechmobile"
                 artifactId = "fstt"
-                version = "1.0.1"
+                version = "1.0.2"
             }
         }
     }
