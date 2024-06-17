@@ -7,9 +7,6 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.github.ftechmobile"
-version = "1.0.2"
-
 android {
     namespace = "ai.ftech.fsttsdk"
     compileSdk = 34
@@ -33,6 +30,17 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+}
+
+configure<PublishingExtension> {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.github.ftechmobile"
+            artifactId = "fstt"
+            version = "1.0.3"
+            afterEvaluate { from(components["release"]) }
+        }
     }
 }
 
@@ -62,17 +70,4 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.converter.kotlinx.serialization)
     implementation(libs.lifecycle.runtime.compose)
-}
-
-publishing {
-    publications {
-        afterEvaluate {
-            register<MavenPublication>("release") {
-                from(components["release"])
-                groupId = "com.github.ftechmobile"
-                artifactId = "fstt"
-                version = "1.0.2"
-            }
-        }
-    }
 }
