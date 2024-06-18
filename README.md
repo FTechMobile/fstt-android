@@ -3,6 +3,13 @@
 
 
 ## 1. Install STT SDK
+
+In build.gradle add this line
+maven { url = uri("https://jitpack.io") }
+
+In app/build.gradle add this
+implementation("com.github.FTechMobile:fstt-android:1.0.6")
+
 ## 2. SDK Integration
 #### Initialize SDK
 **java:**
