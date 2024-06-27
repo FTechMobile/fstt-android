@@ -148,6 +148,24 @@ object STTManager {
     }
 
     @JvmStatic
+    fun startSTT(absoluteFilePath: String){
+        if (isNotInitGateway()) {
+            sttCallback?.onFail(AppException(getAppString(R.string.message_recorder_not_initial)))
+            return
+        }
+        processSTT(absoluteFilePath)
+    }
+
+    @JvmStatic
+    fun startSTT(file: File){
+        if (isNotInitGateway()) {
+            sttCallback?.onFail(AppException(getAppString(R.string.message_recorder_not_initial)))
+            return
+        }
+        processSTT(file.absolutePath)
+    }
+
+    @JvmStatic
     fun stopSTT() {
         if (audioRecorder == null) {
             sttCallback?.onFail(AppException(getAppString(R.string.message_sdk_not_initial)))
